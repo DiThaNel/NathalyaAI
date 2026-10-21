@@ -552,9 +552,131 @@
       color: #000000;
     }
 
-    /* Mobile Quick Chips horizontal row */
+    /* Quick Chips Carousel */
+    .chips-carousel-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      background: rgba(14, 14, 18, 0.98);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0 0.5rem;
+      overflow: hidden;
+      box-sizing: border-box;
+      gap: 0.35rem;
+    }
+
+    .chip-scroll-arrow {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--text-primary);
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.15rem;
+      line-height: 1;
+      padding: 0;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      z-index: 3;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .chip-scroll-arrow:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      transform: scale(1.08);
+    }
+
+    .chip-scroll-arrow:active {
+      transform: scale(0.95);
+    }
+
     .mobile-quick-chips {
-      display: none;
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      gap: 0.5rem;
+      padding: 0.65rem 0.35rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      scroll-behavior: smooth;
+    }
+
+    .mobile-quick-chips.dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+
+    .mobile-quick-chips::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .mobile-quick-chips::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 9999px;
+    }
+
+    .mobile-quick-chips::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 9999px;
+    }
+
+    .mobile-quick-chips::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .quick-chip {
+      flex: 0 0 auto;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-primary);
+      font-size: 0.74rem;
+      font-weight: 500;
+      padding: 0.42rem 0.85rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+      white-space: nowrap;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .quick-chip:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .quick-chip:active {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #ffffff;
+      transform: translateY(0);
     }
 
     .chat-frame-wrapper {
@@ -777,43 +899,15 @@
         min-height: 100%;
       }
 
-      /* Mobile Quick Chips horizontal carousel */
-      .mobile-quick-chips {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        padding: 0.65rem 1rem;
-        background: rgba(14, 14, 18, 0.98);
-        border-bottom: 1px solid var(--border-subtle);
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        -webkit-overflow-scrolling: touch;
+      .chips-carousel-wrapper {
+        padding: 0 0.35rem;
       }
 
-      .mobile-quick-chips::-webkit-scrollbar {
-        display: none;
-      }
-
-      .quick-chip {
-        flex-shrink: 0;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: var(--text-primary);
-        font-size: 0.73rem;
-        font-weight: 500;
-        padding: 0.45rem 0.85rem;
-        border-radius: 9999px;
-        cursor: pointer;
-        font-family: inherit;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        transition: all 0.2s ease;
-      }
-
-      .quick-chip:active {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: #ffffff;
+      .chip-scroll-arrow {
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        font-size: 1rem;
       }
 
       .profile-card {
@@ -1008,20 +1102,33 @@
         </div>
       </div>
 
-      <!-- Quick Inquiry Chips Bar (Mobile Only) -->
-      <div class="mobile-quick-chips" aria-label="Suggested inquiries">
-        <button class="quick-chip" onclick="copyPrompt('How much does the From Zero to Your First Tattoo course cost, and how does the 10% email discount work?')">
-          <span>€135 Course Discount</span>
-        </button>
-        <button class="quick-chip" onclick="copyPrompt('I would like to schedule a tattoo appointment at the Bragança studio. Can you help me select a date and prepare my booking?')">
-          <span>Schedule in Bragança</span>
-        </button>
-        <button class="quick-chip" onclick="copyPrompt('Do I need prior drawing experience to take the beginner tattoo course?')">
-          <span>Beginner Drawing Info</span>
-        </button>
-        <button class="quick-chip" onclick="copyPrompt('Where are Nathalya Reis tattoo studios located in Portugal, and what are the opening hours?')">
-          <span>Locations & Hours</span>
-        </button>
+      <!-- Quick Inquiry Chips Carousel -->
+      <div class="chips-carousel-wrapper" aria-label="Suggested inquiries carousel">
+        <button class="chip-scroll-arrow chip-arrow-left" id="chipPrevBtn" aria-label="Scroll inquiries left" onclick="scrollChips(-220)" title="Scroll left">‹</button>
+        <div class="mobile-quick-chips" id="quickChipsBar" role="region" aria-label="Suggested inquiries list">
+          <button class="quick-chip" onclick="handleChipClick(event, 'How much does the From Zero to Your First Tattoo course cost, and how does the 10% email discount work?')">
+            <span>€135 Course Discount</span>
+          </button>
+          <button class="quick-chip" onclick="handleChipClick(event, 'I would like to schedule a tattoo appointment at the Bragança studio. Can you help me select a date and prepare my booking?')">
+            <span>Schedule in Bragança</span>
+          </button>
+          <button class="quick-chip" onclick="handleChipClick(event, 'I would like to book a consultation at the Vila Real studio. What dates are available?')">
+            <span>Vila Real Studio</span>
+          </button>
+          <button class="quick-chip" onclick="handleChipClick(event, 'Do I need prior drawing experience to take the beginner tattoo course?')">
+            <span>Beginner Drawing Info</span>
+          </button>
+          <button class="quick-chip" onclick="handleChipClick(event, 'Where are Nathalya Reis tattoo studios located in Portugal, and what are the opening hours?')">
+            <span>Locations & Hours</span>
+          </button>
+          <button class="quick-chip" onclick="handleChipClick(event, 'What tattoo styles does Nathalya Reis specialize in, and what is NR Tattoo Art?')">
+            <span>Fine Line & Botanical</span>
+          </button>
+          <button class="quick-chip" onclick="handleChipClick(event, 'How can I enroll in the online masterclass and receive the official NR Tattoo Art certificate?')">
+            <span>Certificate & Modules</span>
+          </button>
+        </div>
+        <button class="chip-scroll-arrow chip-arrow-right" id="chipNextBtn" aria-label="Scroll inquiries right" onclick="scrollChips(220)" title="Scroll right">›</button>
       </div>
 
       <div class="chat-frame-wrapper">
@@ -1166,15 +1273,106 @@
         studioPanel.classList.remove('mobile-active');
       } else {
         const tabChatBtn = document.getElementById('tabChatBtn');
-        if (tabChatBtn.classList.contains('active')) {
+        if (tabChatBtn && tabChatBtn.classList.contains('active')) {
           chatPanel.classList.add('mobile-active');
           studioPanel.classList.remove('mobile-active');
-        } else {
+        } else if (studioPanel) {
           studioPanel.classList.add('mobile-active');
           chatPanel.classList.remove('mobile-active');
         }
       }
     });
+
+    // Enhanced Drag-to-Scroll, Wheel, and Arrow Navigation for Chips Carousel
+    (function initChipsCarousel() {
+      const slider = document.getElementById('quickChipsBar');
+      const prevBtn = document.getElementById('chipPrevBtn');
+      const nextBtn = document.getElementById('chipNextBtn');
+      if (!slider) return;
+
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+      let hasDragged = false;
+
+      // Mouse drag-to-scroll
+      slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        hasDragged = false;
+        slider.classList.add('dragging');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDown) {
+          isDown = false;
+          slider.classList.remove('dragging');
+          setTimeout(() => { hasDragged = false; }, 80);
+        }
+      });
+
+      slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        if (Math.abs(x - startX) > 4) {
+          hasDragged = true;
+        }
+        slider.scrollLeft = scrollLeft - walk;
+        updateArrows();
+      });
+
+      // Mouse wheel support: translates vertical mouse wheel into smooth horizontal scroll
+      slider.addEventListener('wheel', (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          slider.scrollLeft += (e.deltaY * 0.9);
+          updateArrows();
+        }
+      }, { passive: false });
+
+      // Scroll event updates arrow opacity
+      slider.addEventListener('scroll', updateArrows);
+
+      // Handle chip click without triggering if user was dragging
+      window.handleChipClick = function(e, promptText) {
+        if (hasDragged) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        copyPrompt(promptText);
+      };
+
+      // Arrow button click scrolling
+      window.scrollChips = function(offset) {
+        slider.scrollBy({ left: offset, behavior: 'smooth' });
+        setTimeout(updateArrows, 250);
+      };
+
+      function updateArrows() {
+        if (!prevBtn || !nextBtn) return;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+        if (maxScroll <= 4) {
+          prevBtn.style.opacity = '0.2';
+          prevBtn.style.pointerEvents = 'none';
+          nextBtn.style.opacity = '0.2';
+          nextBtn.style.pointerEvents = 'none';
+          return;
+        }
+        prevBtn.style.opacity = slider.scrollLeft <= 5 ? '0.2' : '1';
+        prevBtn.style.pointerEvents = slider.scrollLeft <= 5 ? 'none' : 'auto';
+        nextBtn.style.opacity = slider.scrollLeft >= maxScroll - 5 ? '0.2' : '1';
+        nextBtn.style.pointerEvents = slider.scrollLeft >= maxScroll - 5 ? 'none' : 'auto';
+      }
+
+      // Initial check and periodic check for iframe rendering
+      setTimeout(updateArrows, 200);
+      setTimeout(updateArrows, 800);
+      window.addEventListener('resize', updateArrows);
+    })();
   </script>
 
 </body>
