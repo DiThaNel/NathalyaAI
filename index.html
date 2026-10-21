@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Nathalya Reis Tattoo | Studio Experience</title>
+  <meta name="description" content="Official Assistant for Nathalya Reis Tattoo & NR Tattoo Art. Appointments, bespoke tattoo consultations, and enrollment for the online masterclass.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #09090b;
+      --bg-surface: #121216;
+      --bg-card: rgba(22, 22, 27, 0.82);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(255, 255, 255, 0.2);
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent-gold: #e2c082;
+      --accent-gold-dark: #c89b53;
+      --accent-silver: #e4e4e7;
+      --accent-green: #10b981;
+      --accent-green-bg: rgba(16, 185, 129, 0.12);
+      --shadow-luxury: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(226, 192, 130, 0.05);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(226, 192, 130, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+        linear-gradient(to bottom, #09090b, #0e0e12);
+    }
+
+    /* Ambient lighting grid */
+    .bg-mesh {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.22;
+      background-size: 50px 50px;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Top navigation bar */
+    header {
+      position: relative;
+      z-index: 10;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(9, 9, 11, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1540px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 10px rgba(0,0,0,0.6));
+    }
+
+    .brand-divider {
+      width: 1px;
+      height: 22px;
+      background: var(--border-subtle);
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.25s ease;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .btn-action-ghost {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: none;
+    }
+
+    .btn-action-ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-action-gold {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+      box-shadow: none;
+    }
+
+    .btn-action-gold:hover {
+      background: #e4e4e7;
+      border-color: #e4e4e7;
+      color: #000000;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile segmented tab switcher */
+    .mobile-tab-nav {
+      display: none;
+    }
+
+    .pulse-dot-sm {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.35); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* Main Grid Layout */
+    main {
+      position: relative;
+      z-index: 5;
+      flex: 1;
+      max-width: 1540px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 460px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Left Sidebar: Business & Value Props */
+    .sidebar-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .profile-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-luxury);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    }
+
+    .artist-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .artist-avatar-wrap {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      padding: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+    }
+
+    .artist-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #18181c;
+      display: block;
+    }
+
+    .artist-title-group h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .artist-title-group p {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .bio-text {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .studios-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .studio-pill {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      padding: 0.4rem 0.8rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .studio-pill::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ffffff;
+      opacity: 0.8;
+    }
+
+    /* Course Spotlight Box */
+    .course-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .course-tag {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #a1a1aa;
+      margin-bottom: 0.4rem;
+    }
+
+    .course-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin: 0.75rem 0;
+    }
+
+    .price-discount {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .price-original {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .price-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .course-features {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .course-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .course-features li::before {
+      content: '—';
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* Quick Prompt Cards */
+    .quick-prompts-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .prompt-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .prompt-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .prompt-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateX(3px);
+      color: #ffffff;
+    }
+
+    .prompt-pill span.arrow {
+      font-size: 0.85rem;
+      opacity: 0.45;
+      transition: opacity 0.2s;
+    }
+
+    .prompt-pill:hover span.arrow {
+      opacity: 1;
+    }
+
+    /* Right Main Chat Frame */
+    .chat-container {
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-luxury);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 720px;
+      position: relative;
+      width: 100%;
+    }
+
+    .chat-header {
+      padding: 1.15rem 1.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(14, 14, 18, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .chat-identity {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .ai-badge-circle {
+      width: 40px;
+      height: 40px;
+      background: #09090b;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      flex-shrink: 0;
+    }
+
+    .chat-identity-text h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .chat-identity-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .chat-identity-text p span.model-tag {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .chat-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    /* Mode Switcher */
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.75rem;
+      color: #a1a1aa;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .theme-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+
+    .theme-toggle-btn.active {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #000000;
+    }
+
+    /* Mobile Quick Chips horizontal row */
+    .mobile-quick-chips {
+      display: none;
+    }
+
+    .chat-frame-wrapper {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #09090b;
+      overflow: hidden;
+      display: flex;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .chat-frame {
+      width: 100%;
+      height: 100%;
+      min-height: 640px;
+      border: none;
+      display: block;
+      transition: filter 0.35s ease;
+    }
+
+    /* Dark Mode for Chat Frame */
+    .chat-frame.dark-mode-filter {
+      filter: none;
+      background: #09090b;
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(9, 9, 11, 0.92);
+      padding: 1.5rem 2rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 1540px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-copy a {
+      color: var(--text-secondary);
+      text-decoration: underline;
+    }
+
+    /* Responsive visibility helpers */
+    .text-mobile {
+      display: none;
+    }
+    .text-desktop {
+      display: inline;
+    }
+    .theme-label-mobile {
+      display: none;
+    }
+    .theme-label-full {
+      display: inline;
+    }
+
+    /* ----------------------------------------------------
+       RESPONSIVE BREAKPOINTS (Mobile & Tablet Refinements)
+       ---------------------------------------------------- */
+    @media (max-width: 992px) {
+      header {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-container {
+        gap: 0.5rem;
+      }
+
+      .brand-logo {
+        height: 28px;
+      }
+
+      .brand-subtitle,
+      .brand-divider {
+        display: none !important;
+      }
+
+      .header-actions {
+        gap: 0.45rem;
+      }
+
+      .btn-action {
+        padding: 0.42rem 0.75rem;
+        font-size: 0.74rem;
+      }
+
+      .text-desktop {
+        display: none !important;
+      }
+
+      .text-mobile {
+        display: inline !important;
+      }
+
+      .theme-label-full {
+        display: none !important;
+      }
+
+      .theme-label-mobile {
+        display: inline !important;
+      }
+
+      main {
+        padding: 0.85rem 0.85rem 2rem 0.85rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      /* Mobile tabs switch */
+      .mobile-tab-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        width: 100%;
+        background: rgba(22, 22, 27, 0.9);
+        padding: 4px;
+        border-radius: 12px;
+        border: 1px solid var(--border-subtle);
+        margin-bottom: 0.25rem;
+      }
+
+      .mobile-tab-btn {
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        font-family: inherit;
+        padding: 0.65rem 0.75rem;
+        border-radius: 8px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+      }
+
+      .mobile-tab-btn.active {
+        background: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      .mobile-tab-btn.active .pulse-dot-sm {
+        box-shadow: 0 0 6px rgba(0,0,0,0.5);
+      }
+
+      /* Toggle views on mobile */
+      .sidebar-panel,
+      .chat-container {
+        display: none;
+      }
+
+      .sidebar-panel.mobile-active,
+      .chat-container.mobile-active {
+        display: flex;
+      }
+
+      /* Chat container sizing on mobile */
+      .chat-container {
+        height: calc(100vh - 160px);
+        height: calc(100dvh - 160px);
+        min-height: 520px;
+        max-height: 860px;
+        border-radius: var(--radius-md);
+      }
+
+      .chat-header {
+        padding: 0.85rem 1rem;
+        gap: 0.5rem;
+      }
+
+      .chat-identity {
+        gap: 0.6rem;
+      }
+
+      .ai-badge-circle {
+        width: 34px;
+        height: 34px;
+        font-size: 0.75rem;
+      }
+
+      .chat-identity-text h2 {
+        font-size: 0.86rem;
+      }
+
+      .chat-identity-text p {
+        font-size: 0.7rem;
+      }
+
+      .chat-controls-group {
+        gap: 0.35rem;
+      }
+
+      .theme-toggle-btn {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.7rem;
+      }
+
+      .chat-frame {
+        min-height: 100%;
+      }
+
+      /* Mobile Quick Chips horizontal carousel */
+      .mobile-quick-chips {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding: 0.65rem 1rem;
+        background: rgba(14, 14, 18, 0.98);
+        border-bottom: 1px solid var(--border-subtle);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .mobile-quick-chips::-webkit-scrollbar {
+        display: none;
+      }
+
+      .quick-chip {
+        flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--text-primary);
+        font-size: 0.73rem;
+        font-weight: 500;
+        padding: 0.45rem 0.85rem;
+        border-radius: 9999px;
+        cursor: pointer;
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        transition: all 0.2s ease;
+      }
+
+      .quick-chip:active {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: #ffffff;
+      }
+
+      .profile-card {
+        padding: 1.4rem;
+        border-radius: var(--radius-md);
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 0.65rem 0.75rem;
+      }
+
+      .brand-logo {
+        height: 25px;
+      }
+
+      .header-actions {
+        gap: 0.35rem;
+      }
+
+      .btn-action {
+        padding: 0.38rem 0.6rem;
+        font-size: 0.71rem;
+      }
+
+      .chat-identity-text p span.model-tag {
+        display: none;
+      }
+
+      .pricing-row {
+        gap: 0.5rem;
+      }
+
+      .price-discount {
+        font-size: 1.4rem;
+      }
+
+      footer {
+        padding: 1.25rem 0.75rem;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.65rem;
+      }
+  </style>
+</head>
+<body>
+
+  <div class="bg-mesh"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="brand-group">
+        <img class="brand-logo" src="https://nathalyareistattoo.com/wp-content/uploads/2021/11/Logo-branco-lili2.png" alt="Nathalya Reis Tattoo">
+        <div class="brand-divider"></div>
+        <span class="brand-subtitle">NR TATTOO ART</span>
+      </div>
+
+      <div class="header-actions">
+        <a class="btn-action btn-action-ghost" href="https://nathalyareistattoo.com/" target="_blank" rel="noopener">
+          <span class="text-desktop">Official Website ↗</span>
+          <span class="text-mobile">Website ↗</span>
+        </a>
+        <a class="btn-action btn-action-gold" href="https://nathalyareistattoo.com/cart/?add-to-cart=372" target="_blank" rel="noopener">
+          <span class="text-desktop">Enroll in Masterclass (€150)</span>
+          <span class="text-mobile">Masterclass €135</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main>
+
+    <!-- Mobile Segmented Tab Navigation -->
+    <div class="mobile-tab-nav" id="mobileTabs" role="tablist" aria-label="Studio View Switcher">
+      <button class="mobile-tab-btn active" id="tabChatBtn" role="tab" aria-selected="true" onclick="switchMobileTab('chat')">
+        <span class="pulse-dot-sm"></span> AI Assistant
+      </button>
+      <button class="mobile-tab-btn" id="tabStudioBtn" role="tab" aria-selected="false" onclick="switchMobileTab('studio')">
+        Studio & Masterclass
+      </button>
+    </div>
+
+    <!-- Left Column: Business & Prompts -->
+    <div class="sidebar-panel" id="sidebarPanel">
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <div class="artist-header">
+          <div class="artist-avatar-wrap">
+            <img class="artist-avatar" src="https://nathalyareistattoo.com/wp-content/uploads/2021/11/IMG_0686-300x300.png" alt="Nathalya Reis">
+          </div>
+          <div class="artist-title-group">
+            <h1>Nathalya Reis</h1>
+            <p>Fine Line & Master Tattoo Artist</p>
+          </div>
+        </div>
+
+        <p class="bio-text">
+          Professional tattoo artist since 2015 with formal training in Design and creative entrepreneurship. Founder of <strong>NR TATTOO ART</strong>, featuring two bespoke private studios in Portugal and a team of 7 resident artists specializing in delicate fine line, botanical pieces, and fine art replicas.
+        </p>
+
+        <div class="studios-pill-group">
+          <span class="studio-pill">Bragança Studio</span>
+          <span class="studio-pill">Vila Real Studio</span>
+          <span class="studio-pill">Porto & Lisbon Spots</span>
+          <span class="studio-pill">7 Resident Artists</span>
+        </div>
+
+        <!-- Course Spotlight -->
+        <div class="course-card">
+          <div class="course-tag">Featured Online Masterclass</div>
+          <h3 class="course-title">From Zero to Your First Tattoo</h3>
+          <div class="pricing-row">
+            <span class="price-discount">€135</span>
+            <span class="price-original">€150</span>
+            <span class="price-badge">10% OFF</span>
+          </div>
+          <ul class="course-features">
+            <li>19 in-depth video modules (5h 21m)</li>
+            <li>Official NR Tattoo Art certificate of completion</li>
+            <li>Hands-on practice on synthetic & real skin</li>
+            <li>Exclusive supplier network across Europe & Brazil</li>
+          </ul>
+          <a class="btn-action btn-action-gold" style="width: 100%; justify-content: center;" href="https://nathalyareistattoo.com/cart/?add-to-cart=372" target="_blank" rel="noopener">
+            Enroll with 10% Discount →
+          </a>
+        </div>
+
+        <!-- Quick Prompts / Starter Questions -->
+        <div class="quick-prompts-title">
+          <span>Suggested Inquiries</span>
+          <span>Click to copy</span>
+        </div>
+
+        <div class="prompt-list">
+          <button class="prompt-pill" onclick="copyPrompt('How much does the From Zero to Your First Tattoo course cost, and how does the 10% email discount work?')">
+            <span>Course pricing & 10% discount (€150)</span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="prompt-pill" onclick="copyPrompt('I would like to schedule a tattoo appointment at the Bragança studio. Can you help me select a date and prepare my booking?')">
+            <span>Schedule an appointment in Bragança studio</span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="prompt-pill" onclick="copyPrompt('Do I need prior drawing experience to take the beginner tattoo course?')">
+            <span>Beginner requirements for the tattoo course</span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="prompt-pill" onclick="copyPrompt('Where are Nathalya Reis tattoo studios located in Portugal, and what are the opening hours?')">
+            <span>Studio locations & operating hours</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+
+        <!-- Mobile Switch to Chat Action -->
+        <button class="btn-action btn-action-gold" onclick="switchMobileTab('chat')" style="width: 100%; justify-content: center; margin-top: 1.25rem;">
+          Open AI Studio Assistant →
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Column: Live Chat Interface -->
+    <div class="chat-container mobile-active" id="chatContainer">
+      <div class="chat-header">
+        <div class="chat-identity">
+          <div class="ai-badge-circle">NR</div>
+          <div class="chat-identity-text">
+            <h2>Nathalya Reis Tattoo Assistant</h2>
+            <p>Official Assistant • <span class="model-tag">NR TATTOO ART</span></p>
+          </div>
+        </div>
+
+        <div class="chat-controls-group">
+          <!-- Theme Switcher -->
+          <button id="theme-dark-btn" class="theme-toggle-btn active" onclick="setChatTheme('dark')" title="Dark Atelier Theme">
+            <span class="theme-label-full">Dark Atelier</span>
+            <span class="theme-label-mobile">Dark</span>
+          </button>
+          <button id="theme-light-btn" class="theme-toggle-btn" onclick="setChatTheme('light')" title="Original Light Theme">
+            <span class="theme-label-full">Light Mode</span>
+            <span class="theme-label-mobile">Light</span>
+          </button>
+          <a class="btn-action btn-action-ghost" style="padding: 0.38rem 0.75rem; font-size: 0.75rem;" href="https://9o80sxb8g6nu.run.agentplace.io/" target="_blank" rel="noopener" title="Open Fullscreen in New Tab">
+            <span class="theme-label-full">Full Screen ↗</span>
+            <span class="theme-label-mobile">Full ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Inquiry Chips Bar (Mobile Only) -->
+      <div class="mobile-quick-chips" aria-label="Suggested inquiries">
+        <button class="quick-chip" onclick="copyPrompt('How much does the From Zero to Your First Tattoo course cost, and how does the 10% email discount work?')">
+          <span>€135 Course Discount</span>
+        </button>
+        <button class="quick-chip" onclick="copyPrompt('I would like to schedule a tattoo appointment at the Bragança studio. Can you help me select a date and prepare my booking?')">
+          <span>Schedule in Bragança</span>
+        </button>
+        <button class="quick-chip" onclick="copyPrompt('Do I need prior drawing experience to take the beginner tattoo course?')">
+          <span>Beginner Drawing Info</span>
+        </button>
+        <button class="quick-chip" onclick="copyPrompt('Where are Nathalya Reis tattoo studios located in Portugal, and what are the opening hours?')">
+          <span>Locations & Hours</span>
+        </button>
+      </div>
+
+      <div class="chat-frame-wrapper">
+        <iframe 
+          id="agentplace-frame"
+          class="chat-frame dark-mode-filter" 
+          src="https://9o80sxb8g6nu.run.agentplace.io/"
+          allow="microphone; clipboard-read; clipboard-write;"
+          title="Nathalya Reis Tattoo AI Agent">
+        </iframe>
+      </div>
+    </div>
+  </main>
+
+  <!-- Luxury Studio Footer -->
+  <footer>
+    <div class="footer-content">
+      <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-secondary); justify-content: center;">
+        <strong style="color: var(--accent-gold); letter-spacing: 0.06em;">NR TATTOO ART</strong>
+        <span style="color: var(--text-muted);">•</span>
+        <span>Studios in Bragança & Vila Real, Portugal</span>
+        <span style="color: var(--text-muted);">•</span>
+        <span>By Appointment Only</span>
+      </div>
+
+      <div class="footer-copy">
+        © Nathalya Reis Tattoo • Official website: <a href="https://nathalyareistattoo.com/" target="_blank" rel="noopener">nathalyareistattoo.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast" role="status" aria-live="polite">
+    Prompt copied to clipboard! Paste it into the chat.
+  </div>
+
+  <style>
+    #toast {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #ffffff;
+      color: #000000;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.7rem 1.3rem;
+      border-radius: 9999px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+      opacity: 0;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 9999;
+      white-space: nowrap;
+      max-width: 90vw;
+      text-align: center;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+
+  <script>
+    function copyPrompt(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast()).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const tempInput = document.createElement('textarea');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast();
+      } catch (err) {
+        console.error('Copy failed', err);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function setChatTheme(mode) {
+      const frame = document.getElementById('agentplace-frame');
+      const darkBtn = document.getElementById('theme-dark-btn');
+      const lightBtn = document.getElementById('theme-light-btn');
+      if (mode === 'dark') {
+        frame.classList.add('dark-mode-filter');
+        darkBtn.classList.add('active');
+        lightBtn.classList.remove('active');
+      } else {
+        frame.classList.remove('dark-mode-filter');
+        lightBtn.classList.add('active');
+        darkBtn.classList.remove('active');
+      }
+    }
+
+    function switchMobileTab(tab) {
+      const chatPanel = document.getElementById('chatContainer');
+      const studioPanel = document.getElementById('sidebarPanel');
+      const tabChatBtn = document.getElementById('tabChatBtn');
+      const tabStudioBtn = document.getElementById('tabStudioBtn');
+
+      if (window.innerWidth <= 992) {
+        if (tab === 'chat') {
+          chatPanel.classList.add('mobile-active');
+          studioPanel.classList.remove('mobile-active');
+          tabChatBtn.classList.add('active');
+          tabStudioBtn.classList.remove('active');
+          tabChatBtn.setAttribute('aria-selected', 'true');
+          tabStudioBtn.setAttribute('aria-selected', 'false');
+        } else {
+          studioPanel.classList.add('mobile-active');
+          chatPanel.classList.remove('mobile-active');
+          tabStudioBtn.classList.add('active');
+          tabChatBtn.classList.remove('active');
+          tabStudioBtn.setAttribute('aria-selected', 'true');
+          tabChatBtn.setAttribute('aria-selected', 'false');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    }
+
+    // Auto-adjust layout on window resize
+    window.addEventListener('resize', () => {
+      const chatPanel = document.getElementById('chatContainer');
+      const studioPanel = document.getElementById('sidebarPanel');
+      if (window.innerWidth > 992) {
+        chatPanel.classList.remove('mobile-active');
+        studioPanel.classList.remove('mobile-active');
+      } else {
+        const tabChatBtn = document.getElementById('tabChatBtn');
+        if (tabChatBtn.classList.contains('active')) {
+          chatPanel.classList.add('mobile-active');
+          studioPanel.classList.remove('mobile-active');
+        } else {
+          studioPanel.classList.add('mobile-active');
+          chatPanel.classList.remove('mobile-active');
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
